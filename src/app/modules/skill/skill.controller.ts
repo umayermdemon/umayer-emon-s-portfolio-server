@@ -12,7 +12,28 @@ const createSkillIntoDb = catchAsync(async (req, res) => {
     data: result,
   });
 });
+const getAllSkillFromDb = catchAsync(async (req, res) => {
+  const result = await SkillServices.getAllSkillFromDb();
+  sendResponse(res, {
+    statusCode: status.OK,
+    success: true,
+    message: "All skills are retrieved successfully",
+    data: result,
+  });
+});
+const updateSkillIntoDb = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const result = await SkillServices.updateSkillIntoDb(id, req.body);
+  sendResponse(res, {
+    statusCode: status.OK,
+    success: true,
+    message: "Skill updated successfully",
+    data: result,
+  });
+});
 
 export const SkillControllers = {
   createSkillIntoDb,
+  getAllSkillFromDb,
+  updateSkillIntoDb,
 };

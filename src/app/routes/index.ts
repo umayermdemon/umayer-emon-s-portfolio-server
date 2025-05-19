@@ -6,12 +6,12 @@ const router = Router();
 
 const routes = [
   {
-    path: "/skill",
-    route: skillRoutes,
-  },
-  {
     path: "/auth",
     route: authRoutes,
+  },
+  {
+    path: "/skills",
+    route: skillRoutes,
   },
 ];
 
