@@ -26,6 +26,7 @@ const login = async (payload: ILogin) => {
 
   const jwtPayload = {
     role: isExist?.role,
+    name: isExist?.name,
     slug: isExist?.slug,
   };
   const accessToken = jwtHelper.generateToken(

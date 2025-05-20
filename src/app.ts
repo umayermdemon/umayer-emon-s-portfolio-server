@@ -11,16 +11,16 @@ app.use(express.json());
 // routes
 app.use("/v1/api", router);
 
+app.get("/", (req, res) => {
+  res.send({
+    message: "Umayer Emon's portfolio server is running.........",
+  });
+});
+
 // not found
 app.use(notFound);
 
 // global error handler
 app.use(globalErrorHandler);
-
-app.get("/", (req, res) => {
-  res.send({
-    message: "My portfolio server is running.........",
-  });
-});
 
 export default app;

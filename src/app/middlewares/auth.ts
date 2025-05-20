@@ -18,7 +18,7 @@ const auth = (role: string) => {
         token,
         config.jwt.jwt_access_token_secret as Secret
       );
-
+      console.log(decodedData);
       if (role && role !== decodedData?.role) {
         throw new AppError(status.FORBIDDEN, "Forbidden!");
       }

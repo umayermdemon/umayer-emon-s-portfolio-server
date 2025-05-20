@@ -1,3 +1,5 @@
 dummy_admin
 .env
 node_modules
+dist
+.vercel

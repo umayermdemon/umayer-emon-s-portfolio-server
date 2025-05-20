@@ -12,18 +12,27 @@ const createProjectIntoDb = async (payload: IProject) => {
 // Get all projects (not deleted)
 const getAllProjectsFromDb = async () => {
   const result = await Project.find({ isDeleted: false });
+  if (!result.length) {
+    throw new AppError(status.NOT_FOUND, "There are no projects");
+  }
   return result;
 };
 
 // Get a single project by ID
 const getSingleProjectFromDb = async (id: string) => {
   const result = await Project.findOne({ _id: id, isDeleted: false });
+  if (!result) {
+    throw new AppError(status.NOT_FOUND, "Project not found!");
+  }
   return result;
 };
 
 // Get all featured projects
 const getFeaturedProjectFromDb = async () => {
   const result = await Project.find({ featured: true, isDeleted: false });
+  if (!result) {
+    throw new AppError(status.NOT_FOUND, "Featured project not found!");
+  }
   return result;
 };
 
