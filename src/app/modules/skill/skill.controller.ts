@@ -31,9 +31,31 @@ const updateSkillIntoDb = catchAsync(async (req, res) => {
     data: result,
   });
 });
+const softDeleteSkillFromDb = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const result = await SkillServices.softDeleteSkillFromDb(id);
+  sendResponse(res, {
+    statusCode: status.OK,
+    success: true,
+    message: "Skill deleted successfully",
+    data: result,
+  });
+});
+const deleteSkillFromDb = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const result = await SkillServices.deleteSkillFromDb(id);
+  sendResponse(res, {
+    statusCode: status.OK,
+    success: true,
+    message: "Skill deleted successfully",
+    data: result,
+  });
+});
 
 export const SkillControllers = {
   createSkillIntoDb,
   getAllSkillFromDb,
   updateSkillIntoDb,
+  deleteSkillFromDb,
+  softDeleteSkillFromDb,
 };

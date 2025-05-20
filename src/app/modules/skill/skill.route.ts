@@ -14,5 +14,7 @@ router.post(
 );
 router.get("/", SkillControllers.getAllSkillFromDb);
 router.put("/:id", SkillControllers.updateSkillIntoDb);
+router.patch("/:id", SkillControllers.softDeleteSkillFromDb);
+router.delete("/:id", SkillControllers.deleteSkillFromDb);
 
 export const skillRoutes = router;
