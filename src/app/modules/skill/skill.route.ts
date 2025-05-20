@@ -13,8 +13,17 @@ router.post(
   SkillControllers.createSkillIntoDb
 );
 router.get("/", SkillControllers.getAllSkillFromDb);
-router.put("/:id", SkillControllers.updateSkillIntoDb);
-router.patch("/:id", SkillControllers.softDeleteSkillFromDb);
-router.delete("/:id", SkillControllers.deleteSkillFromDb);
+router.put(
+  "/:id",
+  auth("super_admin"),
+  validateRequest(SkillValidations.updateSkillValidationSchema),
+  SkillControllers.updateSkillIntoDb
+);
+router.patch(
+  "/:id",
+  auth("super_admin"),
+  SkillControllers.softDeleteSkillFromDb
+);
+router.delete("/:id", auth("super_admin"), SkillControllers.deleteSkillFromDb);
 
 export const skillRoutes = router;

@@ -3,6 +3,7 @@ import catchAsync from "../../utils/catchAsync";
 import sendResponse from "../../utils/sendResponse";
 import { SkillServices } from "./skill.service";
 
+// Create a new skill
 const createSkillIntoDb = catchAsync(async (req, res) => {
   const result = await SkillServices.createSkillIntoDb(req.body);
   sendResponse(res, {
@@ -12,15 +13,19 @@ const createSkillIntoDb = catchAsync(async (req, res) => {
     data: result,
   });
 });
+
+// Get all skills
 const getAllSkillFromDb = catchAsync(async (req, res) => {
   const result = await SkillServices.getAllSkillFromDb();
   sendResponse(res, {
     statusCode: status.OK,
     success: true,
-    message: "All skills are retrieved successfully",
+    message: "All skills retrieved successfully",
     data: result,
   });
 });
+
+// Update a skill
 const updateSkillIntoDb = catchAsync(async (req, res) => {
   const { id } = req.params;
   const result = await SkillServices.updateSkillIntoDb(id, req.body);
@@ -31,23 +36,27 @@ const updateSkillIntoDb = catchAsync(async (req, res) => {
     data: result,
   });
 });
+
+// Soft delete a skill
 const softDeleteSkillFromDb = catchAsync(async (req, res) => {
   const { id } = req.params;
   const result = await SkillServices.softDeleteSkillFromDb(id);
   sendResponse(res, {
     statusCode: status.OK,
     success: true,
-    message: "Skill deleted successfully",
+    message: "Skill soft deleted successfully",
     data: result,
   });
 });
+
+// Hard delete a skill
 const deleteSkillFromDb = catchAsync(async (req, res) => {
   const { id } = req.params;
   const result = await SkillServices.deleteSkillFromDb(id);
   sendResponse(res, {
     statusCode: status.OK,
     success: true,
-    message: "Skill deleted successfully",
+    message: "Skill permanently deleted successfully",
     data: result,
   });
 });
