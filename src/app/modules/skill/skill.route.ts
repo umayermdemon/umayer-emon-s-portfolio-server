@@ -16,6 +16,8 @@ router.post(
 
 // Get all skills
 router.get("/", SkillControllers.getAllSkillFromDb);
+// Get single skill
+router.get("/:id", auth("super_admin"), SkillControllers.getSingleSkillFromDb);
 
 // Update a skill by ID (only super_admin)
 router.put(

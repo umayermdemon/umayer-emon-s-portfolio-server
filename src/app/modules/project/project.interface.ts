@@ -6,7 +6,7 @@ export interface IProject {
   serverRepo?: string;
   frontendTechnologies: string[];
   backendTechnologies: string[];
-  image: string;
+  images: string[];
   duration?: string; // project duration
   teamMembers?: string[];
   demoVideo?: string;

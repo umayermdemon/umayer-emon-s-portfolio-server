@@ -10,7 +10,7 @@ const projectSchema = new Schema<IProject>(
     serverRepo: { type: String },
     frontendTechnologies: { type: [String], required: true },
     backendTechnologies: { type: [String], required: true },
-    image: { type: String, required: true },
+    images: { type: [String], required: true },
     duration: { type: String },
     teamMembers: { type: [String] },
     demoVideo: { type: String },

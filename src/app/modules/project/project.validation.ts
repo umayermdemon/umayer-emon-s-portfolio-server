@@ -17,7 +17,10 @@ const createProjectValidationSchema = z.object({
       z.string({ required_error: "Each backend technology must be a string!" }),
       { required_error: "Backend technologies are required!" }
     ),
-    image: z.string({ required_error: "Image is required!" }),
+    images: z.array(
+      z.string({ required_error: "Each image must be a string!" }),
+      { required_error: "Images are required!" }
+    ),
     duration: z.string().optional(),
     teamMembers: z.array(z.string()).optional(),
     demoVideo: z.string().optional(),

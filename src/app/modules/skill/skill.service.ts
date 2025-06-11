@@ -14,6 +14,11 @@ const getAllSkillFromDb = async () => {
   const result = await Skill.find({ isDeleted: false });
   return result;
 };
+// Get all skills (not deleted)
+const getSingleSkillFromDb = async (id: string) => {
+  const result = await Skill.findOne({ _id: id, isDeleted: false });
+  return result;
+};
 
 // Update a skill by ID
 const updateSkillIntoDb = async (id: string, payload: Partial<ISkill>) => {
@@ -66,6 +71,7 @@ const deleteSkillFromDb = async (id: string) => {
 export const SkillServices = {
   createSkillIntoDb,
   getAllSkillFromDb,
+  getSingleSkillFromDb,
   updateSkillIntoDb,
   softDeleteSkillFromDb,
   deleteSkillFromDb,

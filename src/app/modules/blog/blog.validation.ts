@@ -15,7 +15,6 @@ const createBlogValidationSchema = z.object({
     views: z.number().optional(),
     likes: z.number().optional(),
     commentsCount: z.number().optional(),
-    isDeleted: z.boolean({ required_error: "isDeleted is required!" }),
     featured: z.boolean({ required_error: "Featured status is required!" }),
     seoTitle: z.string().optional(),
     seoDescription: z.string().optional(),

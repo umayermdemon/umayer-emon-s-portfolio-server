@@ -24,6 +24,17 @@ const getAllSkillFromDb = catchAsync(async (req, res) => {
     data: result,
   });
 });
+// Get single skill
+const getSingleSkillFromDb = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const result = await SkillServices.getSingleSkillFromDb(id);
+  sendResponse(res, {
+    statusCode: status.OK,
+    success: true,
+    message: "Skill is retrieved successfully",
+    data: result,
+  });
+});
 
 // Update a skill
 const updateSkillIntoDb = catchAsync(async (req, res) => {
@@ -64,6 +75,7 @@ const deleteSkillFromDb = catchAsync(async (req, res) => {
 export const SkillControllers = {
   createSkillIntoDb,
   getAllSkillFromDb,
+  getSingleSkillFromDb,
   updateSkillIntoDb,
   deleteSkillFromDb,
   softDeleteSkillFromDb,

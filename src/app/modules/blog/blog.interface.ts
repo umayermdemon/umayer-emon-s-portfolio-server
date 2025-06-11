@@ -12,7 +12,7 @@ export interface IBlog {
   views?: number;
   likes?: number;
   commentsCount?: number;
-  isDeleted: boolean;
+  isDeleted?: boolean;
   featured: boolean;
   seoTitle?: string;
   seoDescription?: string;
