@@ -15,8 +15,18 @@ const createSkillIntoDb = catchAsync(async (req, res) => {
 });
 
 // Get all skills
-const getAllSkillFromDb = catchAsync(async (req, res) => {
-  const result = await SkillServices.getAllSkillFromDb();
+const getAllSkillForAdmin = catchAsync(async (req, res) => {
+  const result = await SkillServices.getAllSkillForAdmin();
+  sendResponse(res, {
+    statusCode: status.OK,
+    success: true,
+    message: "All skills retrieved successfully",
+    data: result,
+  });
+});
+// Get all skills
+const getAllSkillForUser = catchAsync(async (req, res) => {
+  const result = await SkillServices.getAllSkillForUser();
   sendResponse(res, {
     statusCode: status.OK,
     success: true,
@@ -74,7 +84,8 @@ const deleteSkillFromDb = catchAsync(async (req, res) => {
 
 export const SkillControllers = {
   createSkillIntoDb,
-  getAllSkillFromDb,
+  getAllSkillForAdmin,
+  getAllSkillForUser,
   getSingleSkillFromDb,
   updateSkillIntoDb,
   deleteSkillFromDb,

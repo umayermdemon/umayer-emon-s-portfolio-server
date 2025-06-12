@@ -1,8 +1,6 @@
 export interface IBlog {
   title: string;
-  slug: string;
   content: string;
-  summary?: string; // Short description or excerpt
   coverImage: string;
   author: string;
   authorAvatar?: string;

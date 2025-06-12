@@ -15,7 +15,8 @@ router.post(
 );
 
 // Get all skills
-router.get("/", SkillControllers.getAllSkillFromDb);
+router.get("/user", SkillControllers.getAllSkillForUser);
+router.get("/", SkillControllers.getAllSkillForAdmin);
 // Get single skill
 router.get("/:id", auth("super_admin"), SkillControllers.getSingleSkillFromDb);
 

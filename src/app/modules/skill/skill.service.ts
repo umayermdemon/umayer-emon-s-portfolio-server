@@ -9,14 +9,21 @@ const createSkillIntoDb = async (payload: ISkill) => {
   return result;
 };
 
+// Get all skills
+const getAllSkillForAdmin = async () => {
+  const result = await Skill.find();
+  return result;
+};
+
 // Get all skills (not deleted)
-const getAllSkillFromDb = async () => {
+const getAllSkillForUser = async () => {
   const result = await Skill.find({ isDeleted: false });
   return result;
 };
+
 // Get all skills (not deleted)
 const getSingleSkillFromDb = async (id: string) => {
-  const result = await Skill.findOne({ _id: id, isDeleted: false });
+  const result = await Skill.findOne({ _id: id });
   return result;
 };
 
@@ -57,7 +64,7 @@ const softDeleteSkillFromDb = async (id: string) => {
 
 // Hard delete a skill by ID
 const deleteSkillFromDb = async (id: string) => {
-  const isExistsSkill = await Skill.findOne({ _id: id, isDeleted: false });
+  const isExistsSkill = await Skill.findOne({ _id: id, isDeleted: true });
   if (!isExistsSkill) {
     throw new AppError(status.NOT_FOUND, "Skill not found!");
   }
@@ -70,7 +77,8 @@ const deleteSkillFromDb = async (id: string) => {
 
 export const SkillServices = {
   createSkillIntoDb,
-  getAllSkillFromDb,
+  getAllSkillForAdmin,
+  getAllSkillForUser,
   getSingleSkillFromDb,
   updateSkillIntoDb,
   softDeleteSkillFromDb,
