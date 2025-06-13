@@ -1,7 +1,6 @@
 export interface IBlog {
   title: string;
   content: string;
-  coverImage: string;
   author: string;
   authorAvatar?: string;
   published: boolean;
