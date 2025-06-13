@@ -4,8 +4,6 @@ export interface IBlog {
   coverImage: string;
   author: string;
   authorAvatar?: string;
-  tags?: string[];
-  category?: string;
   published: boolean;
   views?: number;
   likes?: number;

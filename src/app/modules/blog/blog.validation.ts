@@ -7,8 +7,6 @@ const createBlogValidationSchema = z.object({
     coverImage: z.string({ required_error: "Cover image is required!" }),
     author: z.string({ required_error: "Author is required!" }),
     authorAvatar: z.string().optional(),
-    tags: z.array(z.string()).optional(),
-    category: z.string().optional(),
     views: z.number().optional(),
     likes: z.number().optional(),
     commentsCount: z.number().optional(),
@@ -20,14 +18,10 @@ const createBlogValidationSchema = z.object({
 const updateBlogValidationSchema = z.object({
   body: z.object({
     title: z.string().optional(),
-    slug: z.string().optional(),
     content: z.string().optional(),
-    summary: z.string().optional(),
     coverImage: z.string().optional(),
     author: z.string().optional(),
     authorAvatar: z.string().optional(),
-    tags: z.array(z.string()).optional(),
-    category: z.string().optional(),
     published: z.boolean().optional(),
     views: z.number().optional(),
     likes: z.number().optional(),

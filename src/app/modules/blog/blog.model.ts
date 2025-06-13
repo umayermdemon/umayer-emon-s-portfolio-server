@@ -8,8 +8,6 @@ const blogSchema = new Schema<IBlog>(
     coverImage: { type: String, required: true },
     author: { type: String, required: true },
     authorAvatar: { type: String },
-    tags: { type: [String] },
-    category: { type: String },
     published: { type: Boolean, required: true, default: false },
     views: { type: Number, default: 0 },
     likes: { type: Number, default: 0 },
