@@ -1,11 +1,17 @@
 import { model, Schema } from "mongoose";
 import { IBlog } from "./blog.interface";
+import { BlogCategories } from "./blog.constant";
 
 const blogSchema = new Schema<IBlog>(
   {
     title: { type: String, required: true, unique: true },
     content: { type: String, required: true },
     author: { type: String, required: true },
+    category: {
+      type: String,
+      required: true,
+      enum: BlogCategories,
+    },
     authorAvatar: { type: String },
     published: { type: Boolean, required: true, default: false },
     views: { type: Number, default: 0 },

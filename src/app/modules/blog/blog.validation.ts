@@ -1,10 +1,14 @@
 import { z } from "zod";
+import { BlogCategories } from "./blog.constant";
 
 const createBlogValidationSchema = z.object({
   body: z.object({
     title: z.string({ required_error: "Title is required!" }),
     content: z.string({ required_error: "Content is required!" }),
     author: z.string({ required_error: "Author is required!" }),
+    category: z.enum([...BlogCategories] as [string, ...string[]], {
+      required_error: "Category is required!",
+    }),
     authorAvatar: z.string().optional(),
     views: z.number().optional(),
     likes: z.number().optional(),
